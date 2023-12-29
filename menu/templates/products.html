@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TUNAS RESTO</title>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+		<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
+        
+        <!-- title of site -->
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="{% static 'assets/logo/favicon.png'%}"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css'%}">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="'{% static 'assets/css/linearicons.css'%}">
+
+        <!--flaticon.css-->
+		<link rel="stylesheet" href="{% static 'assets/css/flaticon.css'%}">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css'%}">
+		<link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css'%}">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootsnav.css'%}" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css'%}">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+<style>
+
+    
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(207, 207, 211);
+        padding: 10px 50px;
+    }
+</style>
+<body>
+    <section id="home" class="welcome-hero">
+
+        <!-- top-area Start -->
+        <div class="top-area">
+            <div class="header-area">
+                <!-- Start Navigation -->
+                <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+                    <div class="container">
+
+                        <!-- Start Header Navigation -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="index.html">TUNAS RESTO<span></span></a>
+                        </div><!--/.navbar-header-->
+                        <!-- End Header Navigation -->
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                                <li class=" scroll active"><a href="#home">home</a></li>
+                                <li class="scroll"><a href="#product">menu</a></li>
+                                <li class="scroll"><a href="#new-cars">new menu</a></li>
+                            </ul><!--/.nav -->
+                        </div><!-- /.navbar-collapse -->
+                    </div><!--/.container-->
+                </nav><!--/nav-->
+                <!-- End Navigation -->
+            </div><!--/.header-area-->
+            <div class="clearfix"></div>
+
+        </div><!-- /.top-area-->
+        <!-- top-area End -->
+
+        <div class="container">
+            <div class="welcome-hero-txt">
+                <h2>SELAMAT MENIKMATI</h2>
+                <p>
+                   Dapatkan makanan dan minuman yang anda inginkan dengan harga terjangkau
+                </p>
+            
+            </div>
+        </div>
+    </section><!--/.welcome-hero-->
+    
+    <section id="product" class="product">
+        <div class="container" style="padding-top: 100; margin-top: 80px;">
+            <div class="section-header">
+                <p> <span></span>    </p>
+                <h2>menu utama</h2>
+            </div><!--/.section-header-->
+            <div class="featured-cars-content">
+                <div class="row">
+                    {% for data in kategori %}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-featured-cars">
+                            <div class="featured-img-box">
+                                <div class="featured-cars-img">
+                                    <img src="" alt="cars">
+                                </div>
+                            </div>
+                            <div class="featured-cars-txt">
+                                <h2><a href="details/{{data.id}}">{{data.namaProduk}}</a></h2>
+                                <h3>Rp {{data.harga}}</h3>
+                                <p>
+                                   Selamat Menikmati |
+                                   <button class="animated fadeInDown"><a href="{% url 'hapus_produk' data.id %}" class="btn btn-outline-danger btn-sm">Hapus</a>
+                                   </button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+          
+        </div><!--/.container-->
+
+    </section><!--/.featured-cars-->
+    <section id="new-cars" class="new-cars">
+        <div class="container">
+            <div class="section-header">
+                <p> <span></span>  </p>
+                <h2> tambah menu</h2>
+            </div><!--/.section-header-->
+            {% if submitted %}
+        berhasil
+    {% else %}
+    <form action="" method="POST" enctype="multipart/form-data"> 
+        <div class="mb-3 mt-3">
+            <h1>tambah menu</h1>
+             {% csrf_token %}
+        </div>  
+       
+        {{ form.as_p }}
+        <button class="welcome-btn animated fadeInDown" onclick="window.location.href='#'" fdprocessedid="fvoo1n" style="opacity: 0;" value="kirim">okeee</button>
+    </form>
+
+    {% endif %}
+        </div><!--/.container-->
+
+    </section>
+</div>
+</div>
+</div>
+
+</section><!--/.welcome-hero-->
+<!--welcome-hero end -->
+
+
+    
+    
+    <!--featured-cars end -->
+
+   
+    <footer id="contact" class="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html">Tunas Resto</a>
+                            </div>
+                            <p>
+                                Restoran Tunas adalah tempat di mana berbagai elemen bersatu untuk menciptakan pengalaman kuliner yang unik. Filosofi ini menekankan pentingnya memahami dan menghargai keberagaman, baik dalam menu maupun dalam penerimaan pelanggan dari berbagai latar belakang.
+                            </p>
+                            <div class="footer-contact">
+                                <p>restotunas@themesine.com</p>
+                                <p>+1 (885) 2563154554</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h2>pemilik restoo</h2>
+                            <ul>
+                                <li><a href="#">raihan gozali putra</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="single-footer-widget">
+                            <h2>top menu</h2>
+                            <div class="row">
+                                <div class="col-md-7 col-xs-6">
+                                    <ul>
+                                        <li><a href="#">es teh</a></li>
+                                        <li><a href="#">teh hangat</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-1 col-md-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h2>news letter</h2>
+                            <div class="footer-newsletter">
+                                <p>
+                                    Subscribe to get latest news  update and informations
+                                </p>
+                            </div>
+                            <div class="hm-foot-email">
+                                <div class="foot-email-box">
+                                    <input type="text" class="form-control" placeholder="Add Email" fdprocessedid="7qigc">
+                                </div><!--/.foot-email-box-->
+                                <div class="foot-email-subscribe">
+                                    <span><i class="fa fa-arrow-right"></i></span>
+                                </div><!--/.foot-email-icon-->
+                            </div><!--/.hm-foot-email-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            © copyright.designed and developed by <a href="https://www.themesine.com/">themesine</a>.
+                        </p><!--/p-->
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>	
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>	
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.footer-copyright-->
+        </div><!--/.container-->
+
+        <div id="scroll-Top">
+            <div class="return-to-top" style="display: block;">
+                <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+            </div>
+            
+        </div><!--/.scroll-Top-->
+        
+    </footer>
+</body>
+<script src="{% static 'assets/js/jquery.js'%}"></script>
+    
+    <!--modernizr.min.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    
+    <!--bootstrap.min.js-->
+    <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+    
+    <!-- bootsnav js -->
+    <script src="{% static 'assets/js/bootsnav.js'%}"></script>
+
+    <!--owl.carousel.js-->
+    <script src="{% static 'assets/js/owl.carousel.min.js'%}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!--Custom JS-->
+    <script src="{% static 'assets/js/custom.js'%}"></script>
+</html>
